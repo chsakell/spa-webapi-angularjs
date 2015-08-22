@@ -1,0 +1,80 @@
+﻿<hr />
+<div class="alert alert-info alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-user-plus fa-3x"></i>
+    Register <strong>{{movie.Title}}</strong> new customer. Make sure you fill all required fields.
+</div>
+<div class="row">
+    <form role="form" novalidate angular-validator name="addCustomerForm" angular-validator-submit="Register()">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newCustomer.FirstName" name="firstName" id="firstName" placeholder="First Name"
+                           validate-on="blur" required required-message="'First Name is required'">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newCustomer.LastName" name="lastName" id="lastName" placeholder="Last Name"
+                           validate-on="blur" required required-message="'Last Name is required'">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <div class="form-group">
+                    <input type="email" class="form-control" ng-model="newCustomer.Email" id="email" name="email" placeholder="Email address"
+                           validate-on="blur" required required-message="'Email is required'">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="identityCard">Identity Card</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newCustomer.IdentityCard" id="identityCard" name="identityCard" placeholder="Identity Card number"
+                           validate-on="blur" required required-message="'Identity Card is required'">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" name="dateOfBirth" datepicker-popup="{{format}}" ng-model="newCustomer.DateOfBirth" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-append-to-body="true" close-text="Close"
+                           validate-on="blur" required required-message="'Date of birth is required'" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="mobilePhone">Mobile phone</label>
+                <div class="form-group">
+                    <input type="text" ng-model="newCustomer.Mobile" class="form-control" id="mobilePhone" name="mobilePhone" placeholder="Mobile phone"
+                           validate-on="blur" required required-message="'Mobile phone is required'">
+
+                </div>
+            </div>
+            <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+        </div>
+    </form>
+    <div class="col-sm-5 col-md-push-1">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <ul>
+                    <li ng-repeat="message in submission.successMessages track by $index">
+                        <strong>{{message}}</strong>
+                    </li>
+                </ul>
+                <strong ng-bind="submission.successMessage"><span class="glyphicon glyphicon-ok"></span> </strong>
+            </div>
+            <div class="alert alert-danger">
+                <ul>
+                    <li ng-repeat="error in submission.errorMessages track by $index">
+                        <strong>{{error}}</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

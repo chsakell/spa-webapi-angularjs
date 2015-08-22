@@ -1,0 +1,40 @@
+﻿
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Rent {{movie.Title}}
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-xs-8 selectContainer">
+                    <label class="control-label">Available Stock items</label>
+                    <select ng-model="selectedStockItem" class="form-control black" ng-options="option.ID as option.UniqueKey for option in stockItems" required></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Select customer</label>
+                    <angucomplete-alt id="members"
+                                      placeholder="Search customers"
+                                      pause="200"
+                                      selected-object="selectCustomer"
+                                      input-changed="selectionChanged"
+                                      remote-url="/api/customers?filter="
+                                      remote-url-data-field=""
+                                      title-field="FirstName,LastName"
+                                      description-field="Email"
+                                      input-class="form-control form-control-small"
+                                      match-class="red"
+                                      text-searching="Searching customers.."
+                                      text-no-results="No customers found matching your filter." />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelRental()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="rentMovie()" ng-disabled="!isEnabled">Rent movie</button>
+        </div>
+    </div>
+</div>

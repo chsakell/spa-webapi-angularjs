@@ -1,0 +1,59 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Home Cinema Customers</h4>
+            <div class="input-group">
+                <input id="inputSearchCustomers" type="search" ng-model="filterCustomers" class="form-control shortInputSearch" placeholder="Filter, search customers..">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="customer in Customers | filter:filterCustomers">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{customer.FirstName}} {{customer.LastName}}</strong><br/>
+                            
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                    <tr>
+                                        <td class="shortPadding">Email:</td>
+                                        <td class="shortPadding"><i>{{customer.Email}}</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="shortPadding">Mobile:</td>
+                                        <td class="shortPadding"><i>{{customer.Mobile}}</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="shortPadding">Birth:</td>
+                                        <td class="shortPadding"><i>{{customer.DateOfBirth | date:'mediumDate'}}</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="shortPadding">Registered:</td>
+                                        <td class="shortPadding"><i>{{customer.RegistrationDate | date:'mediumDate'}}</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <label class="label label-danger">{{customer.IdentityCard}}</label>
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="openEditDialog(customer);">Edit <i class="fa fa-pencil pull-right"></i></buton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>
+            </div>
+        </div>
+    </div>
+</div>

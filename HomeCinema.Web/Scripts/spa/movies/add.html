@@ -1,0 +1,119 @@
+﻿<div id="editMovieWrapper">
+    <hr>
+    <div class="row">
+        <!-- left column -->
+        <div class="col-xs-3">
+            <div class="text-center">
+                <img ng-src="../../Content/images/movies/unknown.jpg" class="avatar img-responsive" alt="avatar">
+                <h6>Add photo...</h6>
+
+                <input type="file" ng-file-select="prepareFiles($files)">
+            </div>
+        </div>
+
+        <!-- edit form column -->
+        <div class="col-xs-9 personal-info">
+            <div class="alert alert-info alert-dismissable">
+                <a class="panel-close close" data-dismiss="alert">×</a>
+                <i class="fa fa-plus"></i>
+                Add <strong>{{movie.Title}}</strong> movie. Make sure you fill all required fields.
+            </div>
+
+            <form class="form-horizontal" role="form" novalidate angular-validator name="addMovieForm" angular-validator-submit="AddMovie()">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                            <label class="control-label">Movie title</label>
+                            <input class="form-control" name="title" type="text" ng-model="movie.Title"
+                                   validate-on="blur" required required-message="'Movie title is required'">
+                        </div>
+
+                        <div class="col-xs-6 col-sm-4 selectContainer">
+                            <label class="control-label">Genre</label>
+                            <select ng-model="movie.GenreId" class="form-control black" ng-options="option.ID as option.Name for option in genres" required></select>
+                            <input type="hidden" name="GenreId" ng-value="movie.GenreId" />
+                        </div>
+
+                        <div class="col-xs-6 col-sm-4">
+                            <label class="control-label">Stocks</label>
+                            <div class="input-group number-spinner">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                                </span>
+                                <input type="text" class="form-control text-center" id="inputStocks" ng-model="movie.NumberOfStocks">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="changeNumberOfStocks($event)" id="btnSetStocks" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="control-label">Director</label>
+                            <input class="form-control" type="text" ng-model="movie.Director" name="director"
+                                   validate-on="blur" required required-message="'Movie director is required'">
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label class="control-label">Writer</label>
+                            <input class="form-control" type="text" ng-model="movie.Writer" name="writer"
+                                   validate-on="blur" required required-message="'Movie writer is required'">
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label class="control-label">Producer</label>
+                            <input class="form-control" type="text" ng-model="movie.Producer" name="producer"
+                                   validate-on="blur" required required-message="'Movie producer is required'">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label class="control-label">Release Date</label>
+                            <p class="input-group">
+                                <input type="text" class="form-control" name="dateReleased" datepicker-popup="{{format}}" ng-model="movie.ReleaseDate" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-append-to-body="true" close-text="Close"
+                                       validate-on="blur" required required-message="'Date Released is required'" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <label class="control-label">Youtube trailer</label>
+                            <input class="form-control" type="text" ng-model="movie.TrailerURI" name="trailerURI"
+                                   validate-on="blur" required required-message="'Movie trailer is required'" ng-pattern="/^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/"
+                                   invalid-message="'You must enter a valid YouTube URL'">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control" ng-model="movie.Description" name="description" rows="3"
+                              validate-on="blur" required required-message="'Movie description is required'" />
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label class="control-label">Rating</label>
+                    <span component-rating="{{movie.Rating}}" ng-model="movie.Rating" class="form-control"></span>
+                </div>
+                <br/>
+                <div class="form-group col-xs-4">
+                    <label class="control-label"></label>
+                    <div class="">
+                        <input type="submit" class="btn btn-primary" value="Submit movie" />
+                        <span></span>
+                        <a class="btn btn-default" ng-href="#/movies/{{movie.ID}}">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+</div>

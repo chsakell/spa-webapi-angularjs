@@ -1,0 +1,18 @@
+﻿<div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand active" href="#/">Home Cinema</a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="#about">About<i class="fa fa-info-circle fa-fw pull-right"></i></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-if="userData.isUserLoggedIn">
+            <li class="userinfo"><a href="#/">{{username}}<i class="fa fa-user fa-fw"></i></a></li>
+        </ul>
+    </div>
+</div>

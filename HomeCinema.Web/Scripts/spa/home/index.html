@@ -1,0 +1,67 @@
+﻿<hr />
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-primary" id="panelLatestMovies">
+            <div class="panel-heading">
+                <h3 class="panel-title">Latest Movies Released</h3>
+            </div>
+
+            <div class="panel-body">
+                <div ng-if="loadingMovies">
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4">
+                        <i class="fa fa-refresh fa-5x fa-spin"></i> <label class="label label-primary">Loading movies...</label>
+                    </div>
+                    <div class="col-xs-4"></div>
+                </div>
+                <div class="col-xs-12 col-sm-6 movie" ng-repeat="movie in latestMovies">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{movie.Title}} </strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <a class="fancybox pull-left" rel="gallery1" ng-href="../../Content/images/movies/{{movie.Image}}" title="{{movie.Description | limitTo:200}}">
+                                        <img class="media-object" height="120" ng-src="../../Content/images/movies/{{movie.Image}}" alt="" />
+                                    </a>
+
+                                </a>
+                                <div class="media-body">
+                                    <available-movie is-available="{{movie.IsAvailable}}"></available-movie>
+                                    <div><small>{{movie.Description | limitTo: 70}}...</small></div>
+                                    <label class="label label-info">{{movie.Genre}}</label><br />
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <span component-rating="{{movie.Rating}}"></span>
+                            <a class="fancybox-media pull-right" ng-href="{{movie.TrailerURI}}">Trailer<i class="fa fa-video-camera fa-fw"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-success" id="panelMovieGenres">
+            <div class="panel-heading">
+                <h3 class="panel-title">Movies Genres</h3>
+            </div>
+
+            <div class="panel-body">
+                <div ng-if="loadingGenres">
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-4"><i class="fa fa-refresh fa-5x fa-spin"></i> <label class="label label-primary">Loading Genres..</label></div>
+                    <div class="col-xs-4"></div>
+                </div>
+                <div id="genres-bar"></div>
+            </div>
+            <div class="panel-footer">
+                <p class="text-center"><em>Wanna add a new Movie? Head over to the add movie form.</em></p>
+                <p class="text-center"><a ng-href="#/movies/add" class="btn btn-default">Add new Movie</a></p>
+            </div>
+        </div>
+    </div>
+</div>

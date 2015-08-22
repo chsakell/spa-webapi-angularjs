@@ -1,0 +1,97 @@
+﻿<hr />
+<div class="jumbotron">
+    <div class="container text-center">
+        <img alt="{{movie.Title}}" ng-src="../../../Content/images/movies/{{movie.Image}}" class="pull-left" height="120" />
+        <div class="movieDescription"><i><i class="fa fa-quote-left"></i>{{movie.Description}}<i class="fa fa-quote-right"></i></i></div>
+        <br />
+        <div class="btn-group">
+            <button ng-if="movie.IsAvailable" type="button" ng-click="openRentDialog();" class="btn btn-sm btn-primary">Rent movie<i class="fa fa-book pull-right"></i></button>
+            <a href="#/movies/edit/{{movie.ID}}" class="btn btn-sm btn-default">Edit movie<i class="fa fa-pencil-square-o pull-right"></i></a>
+        </div> <!-- end btn-group -->
+    </div> <!-- end container -->
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5>{{movie.Title}}</h5>
+            </div>
+            <div class="panel-body" ng-if="!loadingMovie">
+                <div class="media">
+                    <a class="pull-right" ng-href="#/movies/{{movie.ID}}" title="View {{movie.Title}} details">
+                        <img class="media-object" height="120" ng-src="../../Content/images/movies/{{movie.Image}}" alt="" />
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{movie.Title}}</h4>
+                        Directed by: <label>{{movie.Director}}</label><br />
+                        Written by: <label>{{movie.Writer}}</label><br />
+                        Produced by: <label>{{movie.Producer}}</label><br />
+                        Rating: <span component-rating='{{movie.Rating}}'></span>
+                        <br />
+                        <label class="label label-info">{{movie.Genre}}</label>
+                        <available-movie is-available="{{movie.IsAvailable}}"></available-movie>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer clearfix" ng-if="!loadingMovie">
+                <div class="pull-right">
+                    <a ng-href="{{movie.TrailerURI}}" class="btn btn-primary fancybox-media">View Trailer <i class="fa fa-video-camera pull-right"></i></a>
+                    <a ng-href="#/movies/edit/{{movie.ID}}" class="btn btn-default">Edit movie <i class="fa fa-pencil-square pull-right"></i></a>
+                </div>
+            </div>
+            <div ng-if="loadingMovie">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <i class="fa fa-refresh fa-4x fa-spin"></i> <label class="label label-primary">Loading movie data...</label>
+                </div>
+                <div class="col-xs-4"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-danger shortPanel">
+            <div class="panel-heading clearfix">
+                <h5 class="pull-left">Rentals</h5>
+                <div class="input-group">
+                    <input id="inputSearchMovies" type="search" ng-model="filterRentals" class="form-control" placeholder="Filter..">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive" ng-if="!loadingRentals">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Rental date</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="rental in rentalHistory | filter:filterRentals">
+                            <td>{{rental.ID}}</td>
+                            <td>{{rental.Customer}}</td>
+                            <td>{{rental.RentalDate | date:'fullDate'}}</td>
+                            <td ng-class="getStatusColor(rental.Status)">{{rental.Status}}</td>
+                            <td class="text-center">
+                                <button ng-if="isBorrowed(rental)" type="button" class="btn btn-primary btn-xs" ng-click="returnMovie(rental.ID)">Return</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-if="loadingRentals">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <i class="fa fa-refresh fa-4x fa-spin"></i> <label class="label label-primary">Loading rental history...</label>
+                </div>
+                <div class="col-xs-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
