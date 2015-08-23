@@ -26,6 +26,8 @@
 <li>Run HomeCinema.Web application</li>
 </ol>
 
+<a href="https://www.dropbox.com/s/7u6y4y6l2mai2uv/Building%20Single%20Page%20Applications%20using%20Web%20API%20and%20angularJS.pdf?dl=0" target="_blank"><img src="https://chsakell.files.wordpress.com/2015/08/spa-webapi-angular-28.png?w=700" alt="spa-webapi-angular-28" class="alignnone size-full wp-image-3595"></a>
+
 <h3 style="font-weight:normal;">Bower installations - you don't have to run them</h3>
 <ol>
 <li>bower install angucomplete-alt --save</li>
