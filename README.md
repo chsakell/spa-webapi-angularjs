@@ -5,6 +5,7 @@
 <li>ASP.NET Web API</li>
 <li>Entity Framework</li>
 <li>Autofac</li>
+<li>Automapper</li>
 <li>FluentValidation</li>
 <li>AngularJS</li>
 <li>Bootstrap 3</li>
@@ -28,18 +29,6 @@
 </ol>
 
 <a href="https://www.dropbox.com/s/7u6y4y6l2mai2uv/Building%20Single%20Page%20Applications%20using%20Web%20API%20and%20angularJS.pdf?dl=0" target="_blank"><img src="https://chsakell.files.wordpress.com/2015/08/spa-webapi-angular-28.png?w=700" alt="spa-webapi-angular-28" class="alignnone size-full wp-image-3595"></a>
-
-<h3 style="font-weight:normal;">Bower installations - you don't have to run them</h3>
-<ol>
-<li>bower install angucomplete-alt --save</li>
-<li>bower install angular-base64</li>
-<li>bower install angular-file-upload</li>
-<li>bower install tg-angular-validator</li>
-<li>bower install bootstrap</li>
-<li>bower install raty</li>
-<li>bower install angular-loading-bar</li>
-<li>bower install angular-bootstrap</li>
-</ol>
 
 <h3 style="font-weight:normal;">Follow chsakell's Blog</h3>
 <table id="gradient-style" style="box-shadow:3px -2px 10px #1F394C;font-size:12px;margin:15px;width:290px;text-align:left;border-collapse:collapse;" summary="">
@@ -65,3 +54,15 @@
 </tr>
 </tbody>
 </table>
+
+<h3 style="font-weight:normal;">Bower installations - you don't have to run them</h3>
+<ol>
+<li>bower install angucomplete-alt --save</li>
+<li>bower install angular-base64</li>
+<li>bower install angular-file-upload</li>
+<li>bower install tg-angular-validator</li>
+<li>bower install bootstrap</li>
+<li>bower install raty</li>
+<li>bower install angular-loading-bar</li>
+<li>bower install angular-bootstrap</li>
+</ol>
