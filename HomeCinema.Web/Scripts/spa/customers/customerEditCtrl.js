@@ -46,10 +46,14 @@
             $event.preventDefault();
             $event.stopPropagation();
 
-            console.log('test');
             $timeout(function () {
                 $scope.datepicker.opened = true;
             });
+
+            $timeout(function () {
+                $('ul[datepicker-popup-wrap]').css('z-index', '10000');
+            }, 100);
+
             
         };
 
