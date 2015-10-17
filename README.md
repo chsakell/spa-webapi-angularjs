@@ -19,7 +19,7 @@
 <li>Change the connection strings inside the HomeCinema.Data/App.config and HomeCinema.Web/Web.config
    accoarding to your development environment</li>
 <li>Open Package Manager Console</li>
-<li>Select HomeCinema.Data as Default project and run the following commands
+<li>Select HomeCinema.Data as Default project (in package manager console) and run the following commands
    <ol>
    <li>add-migration "initial"</li>
    <li>update-database -verbose</li>
