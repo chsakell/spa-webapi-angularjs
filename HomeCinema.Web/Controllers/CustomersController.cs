@@ -145,36 +145,44 @@ namespace HomeCinema.Web.Controllers
             {
                 HttpResponseMessage response = null;
                 List<Customer> customers = null;
-                int totalMovies = new int();
+                int totalCustomers = new int();
 
                 if (!string.IsNullOrEmpty(filter))
                 {
                     filter = filter.Trim().ToLower();
 
-                    customers = _customersRepository.GetAll()
+                    customers = _customersRepository.FindBy(c => c.LastName.ToLower().Contains(filter) ||
+                            c.IdentityCard.ToLower().Contains(filter) ||
+                            c.FirstName.ToLower().Contains(filter))
                         .OrderBy(c => c.ID)
+                        .Skip(currentPage * currentPageSize)
+                        .Take(currentPageSize)
+                        .ToList();
+
+                    totalCustomers = _customersRepository.GetAll()
                         .Where(c => c.LastName.ToLower().Contains(filter) ||
                             c.IdentityCard.ToLower().Contains(filter) ||
                             c.FirstName.ToLower().Contains(filter))
-                        .ToList();
+                        .Count();
                 }
                 else
                 {
-                    customers = _customersRepository.GetAll().ToList();
-                }
-
-                totalMovies = customers.Count();
-                customers = customers.Skip(currentPage * currentPageSize)
+                    customers = _customersRepository.GetAll()
+                        .OrderBy(c => c.ID)
+                        .Skip(currentPage * currentPageSize)
                         .Take(currentPageSize)
-                        .ToList();
+                    .ToList();
+
+                    totalCustomers = _customersRepository.GetAll().Count();
+                }
 
                 IEnumerable<CustomerViewModel> customersVM = Mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(customers);
 
                 PaginationSet<CustomerViewModel> pagedSet = new PaginationSet<CustomerViewModel>()
                 {
                     Page = currentPage,
-                    TotalCount = totalMovies,
-                    TotalPages = (int)Math.Ceiling((decimal)totalMovies / currentPageSize),
+                    TotalCount = totalCustomers,
+                    TotalPages = (int)Math.Ceiling((decimal)totalCustomers / currentPageSize),
                     Items = customersVM
                 };
 

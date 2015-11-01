@@ -79,21 +79,30 @@ namespace HomeCinema.Web.Controllers
 
                 if (!string.IsNullOrEmpty(filter))
                 {
-                    movies = _moviesRepository.GetAll()
-                        .OrderBy(m => m.ID)
-                        .Where(m => m.Title.ToLower()
+                    movies = _moviesRepository
+                        .FindBy(m => m.Title.ToLower()
                         .Contains(filter.ToLower().Trim()))
+                        .OrderBy(m => m.ID)
+                        .Skip(currentPage * currentPageSize)
+                        .Take(currentPageSize)
                         .ToList();
+
+                    totalMovies = _moviesRepository
+                        .FindBy(m => m.Title.ToLower()
+                        .Contains(filter.ToLower().Trim()))
+                        .Count();
                 }
                 else
                 {
-                    movies = _moviesRepository.GetAll().ToList();
-                }
-
-                totalMovies = movies.Count();
-                movies = movies.Skip(currentPage * currentPageSize)
+                    movies = _moviesRepository
+                        .GetAll()
+                        .OrderBy(m => m.ID)
+                        .Skip(currentPage * currentPageSize)
                         .Take(currentPageSize)
                         .ToList();
+
+                    totalMovies = _moviesRepository.GetAll().Count();
+                }
 
                 IEnumerable<MovieViewModel> moviesVM = Mapper.Map<IEnumerable<Movie>, IEnumerable<MovieViewModel>>(movies);
 
