@@ -71,14 +71,5 @@ If you think that any information you obtained here is worth of some money and a
 </tbody>
 </table>
 
-<h3 style="font-weight:normal;">Bower installations - you don't have to run them</h3>
-<ol>
-<li>bower install angucomplete-alt --save</li>
-<li>bower install angular-base64</li>
-<li>bower install angular-file-upload</li>
-<li>bower install tg-angular-validator</li>
-<li>bower install bootstrap</li>
-<li>bower install raty</li>
-<li>bower install angular-loading-bar</li>
-<li>bower install angular-bootstrap</li>
-</ol>
+<h3>License</h3>
+Code released under the <a href="https://github.com/chsakell/spa-webapi-angularjs/blob/master/licence" target="_blank"> MIT license</a>.
