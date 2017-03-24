@@ -1,4 +1,5 @@
 ﻿using HomeCinema.Data.Repositories;
+using HomeCinema.Data.Abstract;
 using HomeCinema.Entities;
 using System;
 using System.Collections.Generic;

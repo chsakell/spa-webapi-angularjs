@@ -51,6 +51,13 @@ namespace HomeCinema.Data.Migrations
                     UserId = 1  // chsakell
                 }
             });
+            // add permission App to Role 1 
+            context.RolePermissionSet.AddOrUpdate(new RolePermission[] {
+                new RolePermission() {
+                    RoleId = 1, // admin
+                    PermissionKey ="app"
+                }
+            });
         }
 
         private Genre[] GenerateGenres()
