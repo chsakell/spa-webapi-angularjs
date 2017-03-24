@@ -1,0 +1,17 @@
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\AutoMapper.Net4.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\HomeCinema.Services.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\HomeCinema.Services.pdb
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\AutoMapper.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\HomeCinema.Data.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\HomeCinema.Entities.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\EntityFramework.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\MockData.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\HomeCinema.Data.pdb
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\HomeCinema.Entities.pdb
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\AutoMapper.pdb
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\AutoMapper.xml
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\AutoMapper.Net4.pdb
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\bin\Debug\EntityFramework.xml
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\obj\Debug\HomeCinema.Services.csprojResolveAssemblyReference.cache
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\obj\Debug\HomeCinema.Services.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Services\obj\Debug\HomeCinema.Services.pdb
