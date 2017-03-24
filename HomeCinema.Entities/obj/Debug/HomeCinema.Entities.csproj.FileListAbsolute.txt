@@ -1,0 +1,5 @@
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Entities\bin\Debug\HomeCinema.Entities.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Entities\bin\Debug\HomeCinema.Entities.pdb
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Entities\obj\Debug\HomeCinema.Entities.csprojResolveAssemblyReference.cache
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Entities\obj\Debug\HomeCinema.Entities.dll
+C:\Users\shank\Documents\Visual Studio 2015\Projects\spa-webapi-angularjs-master\HomeCinema.Entities\obj\Debug\HomeCinema.Entities.pdb
