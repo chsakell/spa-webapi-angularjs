@@ -195,47 +195,44 @@ namespace HomeCinema.Web.Controllers
 
         [MimeMultipart]
         [Route("images/upload")]
-        public HttpResponseMessage Post(HttpRequestMessage request, int movieId)
+        public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request, int movieId)
         {
-            return CreateHttpResponse(request, () =>
+            HttpResponseMessage response = null;
+
+            var movieOld = _moviesRepository.GetSingle(movieId);
+            if (movieOld == null)
+                response = request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid movie.");
+            else
             {
-                HttpResponseMessage response = null;
+                var uploadPath = HttpContext.Current.Server.MapPath("~/Content/images/movies");
 
-                var movieOld = _moviesRepository.GetSingle(movieId);
-                if (movieOld == null)
-                    response = request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid movie.");
-                else
+                var multipartFormDataStreamProvider = new UploadMultipartFormProvider(uploadPath);
+
+                // Read the MIME multipart asynchronously 
+                await Request.Content.ReadAsMultipartAsync(multipartFormDataStreamProvider);
+
+                string _localFileName = multipartFormDataStreamProvider
+                    .FileData.Select(multiPartData => multiPartData.LocalFileName).FirstOrDefault();
+
+                // Create response
+                FileUploadResult fileUploadResult = new FileUploadResult
                 {
-                    var uploadPath = HttpContext.Current.Server.MapPath("~/Content/images/movies");
+                    LocalFilePath = _localFileName,
 
-                    var multipartFormDataStreamProvider = new UploadMultipartFormProvider(uploadPath);
+                    FileName = Path.GetFileName(_localFileName),
 
-                    // Read the MIME multipart asynchronously 
-                    Request.Content.ReadAsMultipartAsync(multipartFormDataStreamProvider);
+                    FileLength = new FileInfo(_localFileName).Length
+                };
 
-                    string _localFileName = multipartFormDataStreamProvider
-                        .FileData.Select(multiPartData => multiPartData.LocalFileName).FirstOrDefault();
+                // update database
+                movieOld.Image = fileUploadResult.FileName;
+                _moviesRepository.Edit(movieOld);
+                _unitOfWork.Commit();
 
-                    // Create response
-                    FileUploadResult fileUploadResult = new FileUploadResult
-                    {
-                        LocalFilePath = _localFileName,
+                response = request.CreateResponse(HttpStatusCode.OK, fileUploadResult);
+            }
 
-                        FileName = Path.GetFileName(_localFileName),
-
-                        FileLength = new FileInfo(_localFileName).Length
-                    };
-
-                    // update database
-                    movieOld.Image = fileUploadResult.FileName;
-                    _moviesRepository.Edit(movieOld);
-                    _unitOfWork.Commit();
-
-                    response = request.CreateResponse(HttpStatusCode.OK, fileUploadResult);
-                }
-
-                return response;
-            });
+            return response;
         }
     }
 }
