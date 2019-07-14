@@ -38,11 +38,11 @@
                             <label class="control-label">Stocks</label>
                             <div class="input-group number-spinner">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                                    <button class="btn btn-default" data-dir="dwn" ng-click="changeNumberOfStocks()" ><span class="glyphicon glyphicon-minus"></span></button>
                                 </span>
                                 <input type="text" class="form-control text-center" id="inputStocks" ng-model="movie.NumberOfStocks">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="changeNumberOfStocks($event)" id="btnSetStocks" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                                    <button type="button" class="btn btn-default" ng-click="changeNumberOfStocks(true)" id="btnSetStocks" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
                                 </span>
                             </div>
                         </div>

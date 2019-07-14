@@ -80,13 +80,13 @@
             $location.url('movies/edit/' + $scope.movie.ID);
         }
 
-        function changeNumberOfStocks($vent)
+        function changeNumberOfStocks(increase)
         {
             var btn = $('#btnSetStocks'),
             oldValue = $('#inputStocks').val().trim(),
             newVal = 0;
 
-            if (btn.attr('data-dir') == 'up') {
+            if (increase) {
                 newVal = parseInt(oldValue) + 1;
             } else {
                 if (oldValue > 1) {
