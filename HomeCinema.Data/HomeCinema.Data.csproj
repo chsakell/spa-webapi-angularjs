@@ -13,6 +13,10 @@
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,7 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IRepositories.cs" />
     <Compile Include="Configurations\EntityBaseConfiguration.cs" />
+    <Compile Include="Configurations\ActivityLogConfiguration.cs" />
     <Compile Include="Configurations\GenreConfiguration.cs" />
     <Compile Include="Configurations\RentalConfiguration.cs" />
     <Compile Include="Configurations\MovieConfiguration.cs" />
@@ -66,16 +72,27 @@
     <Compile Include="Extensions\RentalExtensions.cs" />
     <Compile Include="Extensions\StockExtensions.cs" />
     <Compile Include="Extensions\CustomerExtensions.cs" />
+    <Compile Include="Helper\EntityHelperMethods.cs" />
+    <Compile Include="Helper\PredicateBuilder.cs" />
     <Compile Include="HomeCinemaContext.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Migrations\201703231700563_initial.cs" />
+    <Compile Include="Migrations\201703231700563_initial.Designer.cs">
+      <DependentUpon>201703231700563_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703241203435_logAuthSetting.cs" />
+    <Compile Include="Migrations\201703241203435_logAuthSetting.Designer.cs">
+      <DependentUpon>201703241203435_logAuthSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\EntityBaseRepository.cs" />
-    <Compile Include="Repositories\IEntityBaseRepository.cs" />
+    <Compile Include="Abstract\IEntityBaseRepository.cs" />
     <Compile Include="Extensions\UserExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +109,15 @@
     <Content Include="it\MockData.resources.dll" />
     <Content Include="uk\MockData.resources.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703231700563_initial.resx">
+      <DependentUpon>201703231700563_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703241203435_logAuthSetting.resx">
+      <DependentUpon>201703241203435_logAuthSetting.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

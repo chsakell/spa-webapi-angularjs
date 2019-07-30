@@ -29,6 +29,16 @@ namespace HomeCinema.Data
         public IDbSet<Stock> StockSet { get; set; }
         public IDbSet<Rental> RentalSet { get; set; }
         public IDbSet<Error> ErrorSet { get; set; }
+        //24-03-2017
+        public IDbSet<ActivityLog> ActivityLogSet { get; set; }
+        public IDbSet<ActivityLogType> ActivityLogTypeSet { get; set; }
+        public IDbSet<RolePermission> RolePermissionSet { get; set; }
+        public IDbSet<Setting> SettingSet { get; set; }
+        public IDbSet<UserPermission> UserPermissionSet { get; set; }
+        public IDbSet<UserPreference> UserPreferenceSet { get; set; }
+
+
+
         #endregion
 
         public virtual void Commit()
