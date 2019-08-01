@@ -13,6 +13,8 @@ namespace HomeCinema.Services
         MembershipContext ValidateUser(string username, string password);
         User CreateUser(string username, string email, string password, int[] roles);
         User GetUser(int userId);
+        User GetUserByName(string userName);
+
         List<Role> GetUserRoles(string username);
     }
 }

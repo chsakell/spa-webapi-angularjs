@@ -12,16 +12,19 @@ using System.Net.Http;
 using System.Web.Http;
 using HomeCinema.Web.Infrastructure.Extensions;
 using HomeCinema.Data.Extensions;
+using HomeCinema.Data.Abstract;
+using HomeCinema.Web.Helper;
 
 namespace HomeCinema.Web.Controllers
 {
+    [ValidatePermission("appss")]
     [Authorize(Roles="Admin")]
     [RoutePrefix("api/customers")]
     public class CustomersController : ApiControllerBase
     {
-        private readonly IEntityBaseRepository<Customer> _customersRepository;
+        private readonly ICustomerRepository _customersRepository;
 
-        public CustomersController(IEntityBaseRepository<Customer> customersRepository, 
+        public CustomersController(ICustomerRepository customersRepository, 
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork)
             : base(_errorsRepository, _unitOfWork)
         {

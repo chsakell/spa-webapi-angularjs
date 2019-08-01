@@ -9,6 +9,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using HomeCinema.Data.Extensions;
+using HomeCinema.Data.Abstract;
 
 namespace HomeCinema.Services
 {
@@ -92,6 +93,10 @@ namespace HomeCinema.Services
         public User GetUser(int userId)
         {
             return _userRepository.GetSingle(userId);
+        }
+        public User GetUserByName(string userName)
+        {
+            return _userRepository.GetSingle(t=>t.Username == userName);
         }
 
         public List<Role> GetUserRoles(string username)

@@ -24,5 +24,7 @@ namespace HomeCinema.Entities
         public DateTime DateCreated { get; set; }
 
         public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserPermission> UserPermissions { get; set; }
+
     }
 }
